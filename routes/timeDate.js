@@ -16,7 +16,9 @@ router.get('/', (request, response) => {
   const {timezone = 0} = request.query;
   
   const userDateInTimezone = getUserDateInTimezone(timezone);
-  
+  var time = userDateInTimezone.toISOString();
+  var a = time.split('.');
+  var b = a[0];
   const dateObject = {
     day: userDateInTimezone.getDate(),
     month: userDateInTimezone.getMonth() + 1,
@@ -24,7 +26,7 @@ router.get('/', (request, response) => {
     hours: userDateInTimezone.getHours(),
     minutes: userDateInTimezone.getMinutes(),
     seconds: userDateInTimezone.getSeconds(),
-    isoTime: userDateInTimezone.toISOString()
+    isoTime: b
   };
     
   const userAttributes = {
