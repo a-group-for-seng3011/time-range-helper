@@ -2,9 +2,14 @@ const express = require('express');
 
 const router = express.Router();
 
+const ONE_HOUR_IN_MILLISECONDS = 60 * 60 * 1000;
+
 const getUserDateInTimezone = offsetInHours => {
   const utcDate = Date.now();
-  return new Date(utcDate);
+  
+  const offsetInMilliseconds = ONE_HOUR_IN_MILLISECONDS * offsetInHours;
+  
+  return new Date(utcDate + offsetInMilliseconds);
 };
 
 router.get('/', (request, response) => {
