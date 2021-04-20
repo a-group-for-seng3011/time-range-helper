@@ -2,14 +2,9 @@ const express = require('express');
 
 const router = express.Router();
 
-const ONE_HOUR_IN_MILLISECONDS = 60 * 60 * 1000;
-
 const getUserDateInTimezone = offsetInHours => {
   const utcDate = Date.now();
-  
-  const offsetInMilliseconds = ONE_HOUR_IN_MILLISECONDS * offsetInHours;
-  
-  return new Date(utcDate + offsetInMilliseconds);
+  return new Date(utcDate);
 };
 
 router.get('/', (request, response) => {
@@ -17,6 +12,7 @@ router.get('/', (request, response) => {
   
   const userDateInTimezone = getUserDateInTimezone(timezone);
   var isoTime = userDateInTimezone.toISOString();
+  // userDateInTimezone
   var arr = isoTime.split('.');
   var end_time = arr[0];
   const dateObject = {
@@ -26,8 +22,9 @@ router.get('/', (request, response) => {
     hours: userDateInTimezone.getHours(),
     minutes: userDateInTimezone.getMinutes(),
     seconds: userDateInTimezone.getSeconds(),
-    start_time: end_time,
-    end_time: end_time
+    start_time: isoTime,
+    end_time: end_time,
+    unknoow: userDateInTimezone.setDate(userDateInTimezone.getDate + 7)
   };
     
   const userAttributes = {
