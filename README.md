@@ -1,9 +1,5 @@
-# Chatfuel Demo Bot
+# Time Range Helper
 
-
-Hello! I'm Marc and I make lots of videos to help people to learn how to integrate APIs with Chatfuel. You can find [all of my videos here](https://www.youtube.com/playlist?list=PLDvWRKT9Cd2g-L4_hStYOcmOfTF87U8FM).
-
-I'll add new API endpoints to this bot as part of my video series.
-
-## Endpoints
-
+This is the helper package for our Grandma chat bot.
+It returns the start time and end time based on the 
+current time and the length we expected.
