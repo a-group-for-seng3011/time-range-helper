@@ -18,8 +18,13 @@ router.get('/', (request, response) => {
   const userDateInTimezone = getUserDateInTimezone(timezone);
   
   var date = new Date();
-  var pastDate = date.getMonth() - 6;
-  date.setDate(pastDate);
+  var pastMonth = date.getMonth() - 6;
+  if (pastMonth <= 0) {
+    pastMonth += 11;
+    date.setFullYear(date.getFullYear() - 1);
+  }
+  date.setMonth(pastMonth);
+  console.log(date);
   var isoTime1 = date.toISOString();
   var arr1 = isoTime1.split('.');
   var start_time = arr1[0];
