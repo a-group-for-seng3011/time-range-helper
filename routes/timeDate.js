@@ -18,7 +18,7 @@ router.get('/', (request, response) => {
   const userDateInTimezone = getUserDateInTimezone(timezone);
   
   var date = new Date();
-  var pastDate = date.getDate() - 7;
+  var pastDate = date.getMonth() - 6;
   date.setDate(pastDate);
   var isoTime1 = date.toISOString();
   var arr1 = isoTime1.split('.');
