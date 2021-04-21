@@ -18,9 +18,9 @@ router.get('/', (request, response) => {
   const userDateInTimezone = getUserDateInTimezone(timezone);
   
   var date = new Date();
-  var pastMonth = date.getMonth() - 6;
+  var pastMonth = date.getMonth() - 1;
   if (pastMonth <= 0) {
-    pastMonth += 11;
+    pastMonth += 12;
     date.setFullYear(date.getFullYear() - 1);
   }
   date.setMonth(pastMonth);
